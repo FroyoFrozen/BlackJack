@@ -4,10 +4,11 @@ public class Main {
     public static void main(String[] args) {
         System.out.println("Hello, Gamblers and Gamblettes!");
         Scanner scanner = new Scanner(System.in);
+
+
         BlackJackGame game = new BlackJackGame();
 
         while (true) {
-            // Start the game for each round
             game.startGame();
 
             System.out.println("Your hand: " + game.getPlayerHand() + " (Total: " + game.getPlayerSum() + ")");
