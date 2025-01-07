@@ -27,10 +27,8 @@ public class BlackJackGame {
     }
 
     public void dealerPlay() {
-        dealer.revealHiddenCard();
-        while (dealer.getSum() < 17) {
-            dealer.addCard(deck.dealCard());
-        }
+        dealer.setStrategy(new HitBelowSeventeenStrategy());
+        dealer.play(deck);
     }
 
     public String determineWinner() {
@@ -44,13 +42,12 @@ public class BlackJackGame {
         return "Dealer wins!";
     }
 
-    // Getters voor de hand en de som
     public String getPlayerHand() {
         return handToString(gambler.getHand());
     }
 
     public String getDealerVisibleCard() {
-        return dealer.getHand().get(0).toString(); // Alleen de zichtbare kaart
+        return dealer.getHand().get(0).toString();
     }
 
     public int getPlayerSum() {
@@ -65,7 +62,6 @@ public class BlackJackGame {
         return handToString(dealer.getHand());
     }
 
-    // Hulpmethode om de hand om te zetten naar een leesbare string
     private String handToString(ArrayList<Card> hand) {
         StringBuilder sb = new StringBuilder();
         for (Card card : hand) {
