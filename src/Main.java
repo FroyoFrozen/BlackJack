@@ -5,43 +5,26 @@ public class Main {
         System.out.println("Hello, Gamblers and Gamblettes!");
         Scanner scanner = new Scanner(System.in);
 
-
-        BlackJackGame game = new BlackJackGame();
+        BlackJackGameFacade blackjack = new BlackJackGameFacade();
+        blackjack.startGame();
 
         while (true) {
-            game.startGame();
+            System.out.println("Do you want to 'hit' or 'stay'?");
+            String action = scanner.nextLine().toLowerCase();
 
-            System.out.println("Your hand: " + game.getPlayerHand() + " (Total: " + game.getPlayerSum() + ")");
-            System.out.println("Dealer's visible card: " + game.getDealerVisibleCard() + " (hidden)");
-
-            // Player's turn: hit or stay
-            while (game.getPlayerSum() <= 21) {
-                System.out.println("Do you want to 'hit' or 'stay'?");
-                String action = scanner.nextLine().toLowerCase();
-
-                if (action.equals("hit")) {
-                    game.playerHit();
-                    System.out.println("Your new hand: " + game.getPlayerHand() + " (Total: " + game.getPlayerSum() + ")");
-                } else if (action.equals("stay")) {
-                    break;
-                } else {
-                    System.out.println("Invalid option. Please enter 'hit' or 'stay'.");
-                }
-            }
-
-            if (game.getPlayerSum() > 21) {
-                System.out.println("Your hand exceeds 21. You lose!");
+            if (action.equals("hit")) {
+                blackjack.playerHit();
+                if (blackjack.isPlayerBusted()){} break;
+            } else if (action.equals("stay")) {
+                break;
             } else {
-                // Dealer's turn
-                game.dealerPlay();
-                System.out.println("Dealer's hand: " + game.getDealerHand() + " (Total: " + game.getDealerSum() + ")");
-
-                // Determine the winner
-                String result = game.determineWinner();
-                System.out.println(result);
+                System.out.println("Invalid option. Please enter 'hit' or 'stay'.");
             }
+        }
 
-            break;
+        if (!blackjack.isPlayerBusted()) {
+            blackjack.dealerPlay();
+            blackjack.determineWinner();
         }
 
         scanner.close();
