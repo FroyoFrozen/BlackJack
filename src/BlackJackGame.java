@@ -2,25 +2,28 @@ import java.util.ArrayList;
 
 public class BlackJackGame {
     private Deck deck;
-    private Player player;
+    private Gambler gambler;
     private Dealer dealer;
 
+    DealerFactory dealerFactory = new DealerFactory();
+    GamblerFactory gamblerFactory = new GamblerFactory();
+
     public BlackJackGame() {
-        deck = new Deck();
-        player = new Player();
-        dealer = new Dealer();
+        this.gambler = (Gambler) gamblerFactory.createPlayer();
+        this.dealer = (Dealer) dealerFactory.createPlayer();
+        this.deck = new Deck();
     }
 
     public void startGame() {
         dealer.setHiddenCard(deck.dealCard());
         dealer.addCard(deck.dealCard());
 
-        player.addCard(deck.dealCard());
-        player.addCard(deck.dealCard());
+        gambler.addCard(deck.dealCard());
+        gambler.addCard(deck.dealCard());
     }
 
     public void playerHit() {
-        player.addCard(deck.dealCard());
+        gambler.addCard(deck.dealCard());
     }
 
     public void dealerPlay() {
@@ -31,7 +34,7 @@ public class BlackJackGame {
     }
 
     public String determineWinner() {
-        int playerSum = player.getSum();
+        int playerSum = gambler.getSum();
         int dealerSum = dealer.getSum();
 
         if (playerSum > 21) return "You lose!";
@@ -43,7 +46,7 @@ public class BlackJackGame {
 
     // Getters voor de hand en de som
     public String getPlayerHand() {
-        return handToString(player.getHand());
+        return handToString(gambler.getHand());
     }
 
     public String getDealerVisibleCard() {
@@ -51,7 +54,7 @@ public class BlackJackGame {
     }
 
     public int getPlayerSum() {
-        return player.getSum();
+        return gambler.getSum();
     }
 
     public int getDealerSum() {
