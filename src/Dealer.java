@@ -1,8 +1,10 @@
 public class Dealer extends Player {
     private Card hiddenCard;
+    private DealerStrategy strategy;
 
     public Dealer() {
-        super();  // Calls the constructor of the abstract Player class
+        super();
+        this.strategy = new HitBelowSeventeenStrategy();
     }
 
     public void setHiddenCard(Card card) {
@@ -15,5 +17,16 @@ public class Dealer extends Player {
 
     public void revealHiddenCard() {
         addCard(hiddenCard);
+    }
+
+    public void setStrategy(DealerStrategy strategy) {
+        this.strategy = strategy;
+    }
+
+    public void play(Deck deck) {
+        revealHiddenCard();
+        while (strategy.shouldHit(getSum())) {
+            addCard(deck.dealCard());
+        }
     }
 }
