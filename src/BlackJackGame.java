@@ -5,13 +5,10 @@ public class BlackJackGame {
     private Gambler gambler;
     private Dealer dealer;
 
-    DealerFactory dealerFactory = new DealerFactory();
-    GamblerFactory gamblerFactory = new GamblerFactory();
-
-    public BlackJackGame() {
-        this.gambler = (Gambler) gamblerFactory.createPlayer();
-        this.dealer = (Dealer) dealerFactory.createPlayer();
-        this.deck = new Deck();
+    public BlackJackGame(BlackJackGameBuilder builder) {
+        this.deck = builder.getDeck();
+        this.gambler = builder.getGambler();
+        this.dealer = builder.getDealer();
     }
 
     public void startGame() {
