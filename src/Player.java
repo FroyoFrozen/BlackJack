@@ -24,9 +24,9 @@ public abstract class Player {
     }
 
     private int reduceAce(int sum) {
-        while (sum > 21 && aceCount > 0) {
-            sum -= 10;
-            aceCount--;
+        while (sum > 21 && aceCount> 0) {
+            sum -=10;
+            aceCount++;
         }
         return sum;
     }
