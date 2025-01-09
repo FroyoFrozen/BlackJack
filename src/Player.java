@@ -11,22 +11,25 @@ public abstract class Player {
         aceCount = 0;
     }
 
-    public void addCard(Card card) {
-        hand.add(card);
-        sum += card.getValue(sum);
-        if (card.isAce()) {
-            aceCount++;
-        }
-    }
-
     public int getSum() {
         return reduceAce(sum);
     }
 
-    private int reduceAce(int sum) {
-        while (sum > 21 && aceCount> 0) {
-            sum -=10;
+    public void addCard(Card card) {
+        hand.add(card);
+
+        int cardValue = card.getValue(sum);
+        sum += cardValue;
+        if (card.isAce()) {
             aceCount++;
+        }
+
+        sum = reduceAce(sum);
+    }
+    private int reduceAce(int sum) {
+        while (sum > 21 && aceCount > 0) {
+            sum -= 10;
+            aceCount--;
         }
         return sum;
     }

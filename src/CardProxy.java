@@ -8,7 +8,6 @@ public class CardProxy extends Card {
 
     @Override
     public int getValue(int playerSum) {
-        System.out.println("Accessing value of card: " + actualCard.toString());
         return actualCard.getValue(playerSum);
     }
 
