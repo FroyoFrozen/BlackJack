@@ -37,8 +37,4 @@ public class Deck {
     public Card dealCard() {
         return deck.remove(deck.size() - 1);
     }
-
-    public int remainingCards() {
-        return deck.size();
-    }
 }
