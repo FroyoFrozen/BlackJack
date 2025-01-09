@@ -4,8 +4,6 @@ public class Card {
 
     private AllCardsValueState state;
 
-
-
     public Card(String value, String type) {
         this.value = value;
         setState(value);

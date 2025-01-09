@@ -18,7 +18,7 @@ public class Deck {
 
         for (String type : types) {
             for (String value : values) {
-                Card card = new Card(value, type);
+                CardProxy card = new CardProxy(value, type);
                 deck.add(card);
             }
         }
