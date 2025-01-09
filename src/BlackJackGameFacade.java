@@ -4,8 +4,8 @@ public class BlackJackGameFacade {
 
     private BlackJackGame game;
 
-    public BlackJackGameFacade() {
-        this.game = new BlackJackGame();
+    public BlackJackGameFacade(BlackJackGame game) {
+        this.game = game;
     }
 
     public void startGame() {
