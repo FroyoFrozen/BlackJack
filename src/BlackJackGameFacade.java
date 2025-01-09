@@ -4,8 +4,14 @@ public class BlackJackGameFacade {
 
     private BlackJackGame game;
 
-    public BlackJackGameFacade(BlackJackGame game) {
-        this.game = game;
+    public BlackJackGameFacade() {
+
+        this.game = new BlackJackGameBuilder()
+                .setDeck(new Deck())
+                .setGambler(new Gambler())
+                .setDealer(new Dealer())
+                .build();
+
     }
 
     public void startGame() {

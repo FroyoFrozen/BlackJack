@@ -5,13 +5,7 @@ public class Main {
         System.out.println("Hello, Gamblers and Gamblettes!");
         Scanner scanner = new Scanner(System.in);
 
-        BlackJackGame game = new BlackJackGameBuilder()
-                .setDeck(new Deck())
-                .setGambler(new Gambler())
-                .setDealer(new Dealer())
-                .build();
-
-        BlackJackGameFacade blackjack = new BlackJackGameFacade(game);
+        BlackJackGameFacade blackjack = new BlackJackGameFacade();
         blackjack.startGame();
 
         while (true) {
