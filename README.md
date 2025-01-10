@@ -28,9 +28,12 @@ Design paterns
 Creational design patterns
 
 
+
 Abstract Factory
 
 In dit project wordt een abstract factory gebruikt voor het maken van verschillende soorten spelers. ( Zoals Gambler en Dealer). De PlayerFactory – interface geeft een algemene methode aan om spelers te maken. Terwijl concrete factories (GamblerFactory en DealerFactory) de methode een specifieke werking geven. Deze concrete factories worden vervolgens in de BlackJackGame-klasse opgeroepen voor het maken van een Dealer en een  Gambler.
+
+
 
 Builder
 
@@ -43,6 +46,7 @@ Zo worden in de BlackJackGameBuilder-klasse de nodige componenten voor BlackJack
 
 
 Structural design patterns
+
 
 
 Facade
@@ -60,6 +64,7 @@ In het project wordt een proxy design pattern gebruikt om toegang tot de waarde 
 
 
 Behavioral design patterns
+
 
 
 State
